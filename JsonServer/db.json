@@ -1,0 +1,160 @@
+{
+  "category": [
+    {
+      "id": 1,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Pizzas"
+    },
+    {
+      "id": 2,
+      "image": "../../assets/image/chaat.jpg",
+      "name": "Chaat"
+    },
+    {
+      "id": 3,
+      "image": "../../assets/image/sand.jpg",
+      "name": "Sandwich"
+    },
+    {
+      "id": 4,
+      "image": "../../assets/image/burger.webp",
+      "name": "Burger"
+    },
+    {
+      "id": 5,
+      "image": "../../assets/image/shake.webp",
+      "name": "Shake"
+    },
+    {
+      "id": 6,
+      "image": "../../assets/image/panir.webp",
+      "name": "Paneer"
+    },
+    {
+      "id": 7,
+      "image": "../../assets/image/fries.jpg",
+      "name": "Fries"
+    },
+    {
+      "id": 8,
+      "image": "../../assets/image/pasta.jpg",
+      "name": "Pasta"
+    },
+    {
+      "id": 9
+    },
+    {
+      "id": 10
+    },
+    {
+      "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "id": 14
+    },
+    {
+      "id": 15
+    }
+  ],
+  "pizza": [
+    {
+      "id": 1,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Margerita",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 2,
+      "image": "../../assets/image/dominoz1.jpg",
+      "name": "Cheesy-7",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 3,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Farm Villa",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Cheese, Capsicum, Masharooms",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 4,
+      "image": "../../assets/image/holic1.jpg",
+      "name": "Hot Passion",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 5,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Las vegas",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 6,
+      "image": "../../assets/image/lapinozz1.jpg",
+      "name": "Tanduri Paneer",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 7,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Korma Special",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 8,
+      " image": "../../assets/image/pizza.jpg",
+      "name": "Peri Peri",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 9,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Authentic",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      " id": 10,
+      "image": "../../assets/image/pizza.jpg",
+      "name": "Indian Style",
+      "rating": 4.9,
+      "price": 300,
+      "topping": "Olives, Red paprika, Paneer, Cheese, Capsicum, Masharooms, Baby Corn",
+      "dis": "When all of these delicious flavours are combined on a hand-kneaded pizza base, a universally-adored pizza is created."
+    },
+    {
+      "id": 10
+    }
+  ]
+}
