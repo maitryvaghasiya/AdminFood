@@ -6,34 +6,34 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 export default function AddCategoryScrn() {
-  return (
-    <ScrollView style={styles.screen} >
-    <View style={styles.container}>
-        <View>
-            <View style={{ flexDirection: "row" }}>
-                <Ionicons name={'arrow-back'} style={styles.backarrow} />
+    return (
+        <ScrollView style={styles.screen} >
+            <View style={styles.container}>
+                <View>
+                    <View style={{ flexDirection: "row" }}>
+                        <Ionicons name={'arrow-back'} style={styles.backarrow} />
 
-                <Text style={styles.addhead}>Add Category</Text>
-            </View>
-            <View style={{ justifyContent: "center", alignItems: "center", marginTop: 70 }}>
-                <View style={styles.addImage}></View>
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
-                <TouchableOpacity>
-                    <MaterialIcons name={'add-a-photo'} style={styles.camera} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <MaterialIcons name={'add-photo-alternate'} style={styles.photo} />
-                </TouchableOpacity>
-            </View>
-            <View style={{ marginTop: 35 }}>
-                <View >
-                    <Text style={styles.pName}>Name :</Text>
-                    <TextInput
-                        style={styles.input}
-                    />
-                </View>
-                {/* <View>
+                        <Text style={styles.addhead}>Add Category</Text>
+                    </View>
+                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 70 }}>
+                        <View style={styles.addImage}></View>
+                    </View>
+                    <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+                        <TouchableOpacity>
+                            <MaterialIcons name={'add-a-photo'} style={styles.camera} />
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <MaterialIcons name={'add-photo-alternate'} style={styles.photo} />
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{ marginTop: 35 }}>
+                        <View >
+                            <Text style={styles.pName}>Name :</Text>
+                            <TextInput
+                                style={styles.input}
+                            />
+                        </View>
+                        {/* <View>
                     <Text style={styles.sizeName}>Size :</Text>
                     <View style={{ marginLeft: 15 }}>
                         <View style={{ justifyContent: "space-between", flexDirection: "row", alignItems: "center", marginTop: 5 }}>
@@ -85,16 +85,16 @@ export default function AddCategoryScrn() {
                         textAlignVertical={'top'}
                     />
                 </View> */}
-                <View style={{marginTop:50,alignSelf:"center"}}>
-                    <TouchableOpacity style={styles.subtn}>
-                        <Text style={styles.subtext}>SUBMIT</Text>
-                    </TouchableOpacity>
+                        <View style={{ marginTop: 50, alignSelf: "center" }}>
+                            <TouchableOpacity style={styles.subtn}>
+                                <Text style={styles.subtext}>SUBMIT</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
             </View>
-        </View>
-    </View>
-</ScrollView>
-  )
+        </ScrollView>
+    )
 }
 
 let styles = StyleSheet.create({
@@ -141,7 +141,7 @@ let styles = StyleSheet.create({
         borderColor: colors.secondaryhead,
         fontSize: 18,
         // marginLeft: 10
-        marginTop:15
+        marginTop: 15
     },
     camera: {
         color: colors.secondaryhead,
@@ -213,19 +213,19 @@ let styles = StyleSheet.create({
     //     marginTop: 10
 
     // },
-    subtn:{ 
-        backgroundColor:colors.primary,
-        height:40,
-        width:200,
-        borderRadius:20,
-        justifyContent:"center",
-        alignItems:"center"
+    subtn: {
+        backgroundColor: colors.primary,
+        height: 40,
+        width: 200,
+        borderRadius: 20,
+        justifyContent: "center",
+        alignItems: "center"
 
     },
-    subtext:{
-        fontSize:18,
-        fontWeight:"500",
-        color:"white"
+    subtext: {
+        fontSize: 18,
+        fontWeight: "500",
+        color: "white"
 
     }
 })

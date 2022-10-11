@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCategory, deleteCategory, getCategory, updateCategory } from '../redux/action/category.action';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 import { Modal } from 'react-native';
 
@@ -14,9 +16,12 @@ export default function Menu({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [modalVisibleD, setModalVisibleD] = useState(false);
 
-    const [name, setName] = useState('');
-    const [update, setUpdate] = useState('');
-    const [uid, setUId] = useState('')
+    const [name, setName] = useState();
+    const [image, setImage] = useState('');
+    const [fileName, setFileName] = useState('')
+    const [update, setUpdate] = useState();
+    const [uid, setUId] = useState()
+
 
     const dispatch = useDispatch();
 
@@ -24,77 +29,96 @@ export default function Menu({ navigation }) {
         dispatch(getCategory())
     }, [])
 
+    const resetData = () => {
+        setName('')
+    }
+
     const caty = useSelector(state => state.category);
 
     // console.log(caty.category);
 
-    const handleSubmit = () => {
-        dispatch(addCategory({ name }))
-    }
+    // const handleSubmit = () => {
+    //     dispatch(addCategory({ name }))
+    // }
     // console.log(("aaaaaaaaaaa", caty.category));
 
-    const handleDelete = (id) => {
-        dispatch(deleteCategory(id))
-        console.log(id);
+    const handleDelete = (id, fileName) => {
+        dispatch(deleteCategory(id,fileName))
+        console.log("ff", id, fileName);
     }
 
     const handleAddData = () => {
-        dispatch(addCategory({ name }))
+        console.log("namenamename", name);
+        dispatch(addCategory({ name: name, pro_image: image }))
     }
 
     const handleUpdate = (data) => {
+        console.log("aaa", data);
         setUId(data.id)
         setName(data.name)
+        setImage(data.pro_img)
+        setFileName(data.fileName)
         setModalVisible(true)
         setUpdate(true)
     }
 
     const handleUpdateData = () => {
-        dispatch(updateCategory({ id: uid, name }))
+        dispatch(updateCategory({ id: uid, name: name, pro_image: image, fileName: fileName  }))
     }
 
-    const Menu = [
-        {
-            id: 1,
-            image: require("../../assets/image/pizza.jpg"),
-            name: "Pizzas"
-        },
-        {
-            id: 2,
-            image: require("../../assets/image/chaat.jpg"),
-            name: "Chaat"
-        },
-        {
-            id: 3,
-            image: require("../../assets/image/sand.jpg"),
-            name: "Sandwich"
-        },
-        {
-            id: 4,
-            image: require("../../assets/image/burger.webp"),
-            name: "Burger"
-        },
-        {
-            id: 5,
-            image: require("../../assets/image/shake.webp"),
-            name: "Shake"
-        },
-        {
-            id: 6,
-            image: require("../../assets/image/panir.webp"),
-            name: "Paneer"
-        },
-        {
-            id: 7,
-            image: require("../../assets/image/fries.jpg"),
-            name: "Fries"
-        },
-        {
-            id: 8,
-            image: require("../../assets/image/pasta.jpg"),
-            name: "Pasta"
-        },
-    ]
+    const handleImagePicker = () => {
+        ImagePicker.openPicker({
+            width: 300,
+            height: 400,
+            cropping: true
+        }).then(image => {
+            setImage(image.path)
+            console.log("wwww", image);
+        });
+    }
+
+    // const Menu = [
+    //     {
+    //         id: 1,
+    //         image: require("../../assets/image/pizza.jpg"),
+    //         name: "Pizzas"
+    //     },
+    //     {
+    //         id: 2,
+    //         image: require("../../assets/image/chaat.jpg"),
+    //         name: "Chaat"
+    //     },
+    //     {
+    //         id: 3,
+    //         image: require("../../assets/image/sand.jpg"),
+    //         name: "Sandwich"
+    //     },
+    //     {
+    //         id: 4,
+    //         image: require("../../assets/image/burger.webp"),
+    //         name: "Burger"
+    //     },
+    //     {
+    //         id: 5,
+    //         image: require("../../assets/image/shake.webp"),
+    //         name: "Shake"
+    //     },
+    //     {
+    //         id: 6,
+    //         image: require("../../assets/image/panir.webp"),
+    //         name: "Paneer"
+    //     },
+    //     {
+    //         id: 7,
+    //         image: require("../../assets/image/fries.jpg"),
+    //         name: "Fries"
+    //     },
+    //     {
+    //         id: 8,
+    //         image: require("../../assets/image/pasta.jpg"),
+    //         name: "Pasta"
+    //     },
+    // ]
 
     const MenuData = ({ item }) => {
         return (
@@ -102,7 +126,7 @@ export default function Menu({ navigation }) {
             <TouchableOpacity style={{ marginRight: 26 }} onPress={() => navigation.navigate("PizzaMenu")}>
                 <View style={styles.foodhotel}>
                     <View >
-                        <Image source={item.image} style={styles.foodimg}></Image>
+                        <Image source={{ uri: item.pro_img }} style={styles.foodimg}></Image>
                     </View>
                     <View style={{ position: 'relative', alignItems: "center", justifyContent: "center", alignSelf: "center" }}>
 
@@ -132,7 +156,7 @@ export default function Menu({ navigation }) {
                                         <View style={{ flexDirection: "row" }}>
                                             <Pressable
                                                 style={[styles.button, styles.buttonClose]}
-                                                onPress={() => { handleDelete(item.id); setModalVisibleD(!modalVisibleD) }}
+                                                onPress={() => { handleDelete(item.id, item.fileName); setModalVisibleD(!modalVisibleD) }}
                                             >
                                                 <Text style={styles.StextStyle}>Yes</Text>
                                             </Pressable>
@@ -169,92 +193,95 @@ export default function Menu({ navigation }) {
     }
 
     return (
-        <ScrollView style={styles.screen}>
-            <View style={styles.container}>
-                <Text style={styles.head}>FoodiZone</Text>
-                <View style={styles.bar}>
-                    {/* <TouchableOpacity onPress={() => navigation.navigate("Order")}> */}
-                    <Feather name={'menu'} style={styles.iconmenu} />
-                    {/* </TouchableOpacity> */}
-                    <Image source={require("../../assets/image/boyimage.jpg")} style={styles.boy} />
+        <View style={styles.screen}>
+            <ScrollView >
+                <View style={styles.container}>
+                    <Text style={styles.head}>FoodiZone</Text>
+                    <View style={styles.bar}>
+                        {/* <TouchableOpacity onPress={() => navigation.navigate("Order")}> */}
+                        <Feather name={'menu'} style={styles.iconmenu} />
+                        {/* </TouchableOpacity> */}
+                        <Image source={require("../../assets/image/boyimage.jpg")} style={styles.boy} />
+                    </View>
+                    <View >
+                        <FlatList
+                            numColumns={2}
+                            data={caty.category}
+                            renderItem={MenuData}
+                            keyExtractor={item => item.id}
+                        >
+                        </FlatList>
+                    </View>
                 </View>
-                <View >
-                    <FlatList
-                        numColumns={2}
-                        data={caty.category}
-                        renderItem={MenuData}
-                        keyExtractor={item => item.id}
-                    >
-                    </FlatList>
-                </View>
-                <View style={styles.centeredView}>
-                    <Modal
-                        animationType="slide"
-                        transparent={true}
-                        visible={modalVisible}
-                        onRequestClose={() => {
-                            Alert.alert("Modal has been closed.");
-                            setModalVisible(!modalVisible);
-                        }}
-                    >
-                        <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                                <View>
-                                    <View style={{ justifyContent: "center", alignItems: "center", marginTop: 20 }}>
-                                        <View style={styles.addImage}></View>
-                                    </View>
-                                    <View style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 10 }}>
-                                        <TouchableOpacity>
-                                            <MaterialIcons name={'add-a-photo'} style={styles.camera} />
-                                        </TouchableOpacity>
-                                        <TouchableOpacity>
-                                            <MaterialIcons name={'add-photo-alternate'} style={styles.photo} />
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
-                                <TextInput
-                                    style={styles.modalText}
-                                    placeholder="Category Name"
-                                    placeholderTextColor="#6B7280"
-                                    onChangeText={(text) => setName(text)}
-                                    value={name}
-                                />
-                                <View style={{ flexDirection: "row" }}>
-                                    {
-                                        update ?
-                                            <Pressable
-                                                style={[styles.button, styles.buttonClose]}
-                                                onPress={() => { handleUpdateData(); setModalVisible(!modalVisible) }}
-                                            >
-                                                <Text style={styles.StextStyle}>Submit</Text>
-                                            </Pressable>
-                                            :
-                                            <Pressable
-                                                style={[styles.button, styles.buttonClose]}
-                                                onPress={() => { handleAddData(); setModalVisible(!modalVisible) }}
-                                            >
-                                                <Text style={styles.StextStyle}>Add</Text>
-                                            </Pressable>
-                                    }
-                                    <Pressable
-                                        style={[styles.button, styles.CbuttonClose]}
-                                        onPress={() => setModalVisible(!modalVisible)}
-                                    >
-                                        <Text style={styles.CtextStyle}>Cancel</Text>
-                                    </Pressable>
+            </ScrollView>
+            <View style={styles.roundaddbtn}>
+                <Modal
+                    animationType="slide"
+                    transparent={true}
+                    visible={modalVisible}
+                    onRequestClose={() => {
+                        Alert.alert("Modal has been closed.");
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View style={styles.centeredView}>
+                        <View style={styles.modalView}>
+                            <View>
+                                {/* <View style={{ justifyContent: "center", alignItems: "center", marginTop: 20 }}>
+                                    <View style={styles.addImage}></View>
+                                </View> */}
+                                <View style={{ flexDirection: "row", justifyContent: "space-around", marginTop: 10 }}>
+                                    {/* <TouchableOpacity>
+                                        <MaterialIcons name={'add-a-photo'} style={styles.camera} />
+                                    </TouchableOpacity> */}
+                                    <TouchableOpacity style={{ flexDirection: "row",}} onPress={() => handleImagePicker()}>
+                                        <MaterialIcons name={'add-photo-alternate'} style={styles.photo} />
+                                        <Text style={{ color: colors.secondarytext, top: 8 }}>Upload Image</Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
+                            <TextInput
+                                style={styles.modalText}
+                                placeholder="Category Name"
+                                placeholderTextColor="#6B7280"
+                                onChangeText={(text) => setName(text)}
+                                value={name}
+                            />
+                            <View style={{ flexDirection: "row" }}>
+                                {
+                                    update ?
+                                        <Pressable
+                                            style={[styles.button, styles.buttonClose]}
+                                            onPress={() => { handleUpdateData(); setModalVisible(!modalVisible) }}
+                                        >
+                                            <Text style={styles.StextStyle}>Submit</Text>
+                                        </Pressable>
+                                        :
+                                        <Pressable
+                                            style={[styles.button, styles.buttonClose]}
+                                            onPress={() => { handleAddData(); setModalVisible(!modalVisible) }}
+                                        >
+                                            <Text style={styles.StextStyle}>Add</Text>
+                                        </Pressable>
+                                }
+                                <Pressable
+                                    style={[styles.button, styles.CbuttonClose]}
+                                    onPress={() => setModalVisible(!modalVisible)}
+                                >
+                                    <Text style={styles.CtextStyle}>Cancel</Text>
+                                </Pressable>
+                            </View>
                         </View>
-                    </Modal>
-                    <Pressable
-                        style={[styles.button, styles.buttonOpen]}
-                        onPress={() => {setModalVisible(true); setUpdate(false)}}
-                    >
-                        <Text style={styles.textStyle}>+</Text>
-                    </Pressable>
-                </View>
+                    </View>
+                </Modal>
+                <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => { setModalVisible(true); setUpdate(false), resetData() }}
+                >
+                    <Text style={styles.textStyle}>+</Text>
+                </Pressable>
             </View>
-        </ScrollView>
+        </View>
     )
 }
 
@@ -319,7 +346,17 @@ let styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         marginTop: 22,
-        width: "100%"
+        width: "100%",
+    },
+    roundaddbtn: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22,
+        width: "100%",
+        position: "absolute",
+        bottom: 30,
+        left: 140
     },
     modalView: {
         margin: 20,

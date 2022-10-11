@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "116058328736",
+    "project_id": "adminfood-22108",
+    "storage_bucket": "adminfood-22108.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116058328736:android:6766d2e74522df004bc3c5",
+        "android_client_info": {
+          "package_name": "com.adminfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116058328736-j06sn7hqqj197pnb87pq5ceiv43fhcs8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adminfood",
+            "certificate_hash": "6dbd9328ef850f191fa2dc7b8614764bc5ee0396"
+          }
+        },
+        {
+          "client_id": "116058328736-afm8j6tpimripcdbou65q0lu2t5kr0lr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOI9XELQIDCoJ6wSxK7_R47bh-wUxjTJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116058328736-afm8j6tpimripcdbou65q0lu2t5kr0lr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
